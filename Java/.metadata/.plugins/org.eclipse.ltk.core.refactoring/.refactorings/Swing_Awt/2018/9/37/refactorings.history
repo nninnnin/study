@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;Swing_3button.java&apos; to &apos;ContentPaneEx.java&apos;&#x0D;&#x0A;- Original project: &apos;Swing_Awt&apos;&#x0D;&#x0A;- Original element: &apos;Swing_3button.java&apos;&#x0D;&#x0A;- Renamed element: &apos;ContentPaneEx.java&apos;" description="Rename compilation unit &apos;Swing_3button.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;{Swing_3button.java" name="ContentPaneEx.java" references="false" stamp="1536911844635" version="1.0"/>
+</session>

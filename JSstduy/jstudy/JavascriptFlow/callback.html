@@ -1,0 +1,47 @@
+<script>
+
+//setInterval (window의 메소드)
+
+var cb = function(){
+    console.log('1초마다 실행될 겁니다.');
+};
+
+setInterval(cb,1000);
+
+
+//for each 함수 (Array의 메소드)
+
+var arr = [1,2,3,4,5];
+var entries = [];
+arr.forEach(function(v,i){
+    entries.push([i,v]);
+});
+
+
+//
+var arr = [101,2302,32030,32393,493942];
+
+var empty = [];
+
+
+arr.forEach(function(value,index){document.write(index+':' + value + '<br>');});
+
+arr.forEach(function(v){document.write(this + v + '<br>');},['김','이','박']);
+
+console.log(entries);
+
+//
+
+
+
+document.body.innerHTML = '<div id="a"></div>';
+
+function cbFunc(x){
+    console.log(this,x);
+}
+
+document.getElementById('a').addEventListener('click',cbFunc);
+
+$('#a').on('click',cbFunc);
+
+</script>

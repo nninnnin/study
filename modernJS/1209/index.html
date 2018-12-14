@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+</head>
+<body>
+    <div>안녕하세요!!!</div>
+    <script>
+        function fact(n){
+            if(n<=1){
+                return n;
+            }
+            return n*fact(n-1);
+        }
+
+        for(var i;i<10;i++){
+            document.getElementsByTagName('div').innerHTML(`${i}+ !=${fact(i)}`);
+        }
+    </script>
+</body>
+</html>

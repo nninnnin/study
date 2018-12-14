@@ -1,0 +1,51 @@
+<script>
+
+function a(){
+    var _x = 1;
+    return{
+        get : function x(){
+            return _x;
+        },
+        set : function x(v){
+            _x = v;
+        }
+    }
+}
+var c = a();
+console.log(c.x);
+console.log(c._x);
+c.x = 10;
+console.log(c.x);
+
+//4-1-1
+
+function setName(name){//setName이라는 함수를 실행시키면, 
+    return function(){//name을 리턴하는 함수를 리턴한다.
+        return name;
+    }
+}
+
+var sayMyName = setName('고무곰'); //'고무곰'을 리턴하는 함수가 sayMyName에 할당됨
+document.write(sayMyName()); //name이 return될 것이다!
+
+//4-1-2
+
+function setCounter(){//setCounter라는 함수를 정의하는데
+    var count = 0; //count 라는 변수를 선언하고 0 할당
+    return function(){ //이 함수는 count에 1을 더해서 리턴하는 '함수를 리턴'한다.
+        return ++count;
+    }
+}
+var count = setCounter();
+count(); //그래서 이렇게 setCounter를 실행시키게 되면..
+
+//실행시키면 
+//1. setCounter가 호이스팅(선언)
+//2. var count가 선언
+//3. setCounter()가 실행되면서 해당 함수를 호출하고, setCounter 컨텍스트 시작
+//4. setCounter안에 있는 count와 아래에 있는 익명함수도 호이스팅*
+//5. 호이스팅이 끝난 이후 count에 0 할당, 익명함수가 return됨. 셋카운터 컨텍스트 끝
+//6. ++count가 실행된채로 전역의 var count에 담기므로 거기는 1이된다
+
+//아 쒸바 먼말이야 ㅠㅠ
+</script>

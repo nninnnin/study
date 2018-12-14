@@ -1,0 +1,88 @@
+<script>
+    //배열공부, javascript
+    var member = ['sangyoon', 'donggyu', 'juyoon'];
+    
+
+    alert('members are '+member);
+
+    //음    
+    function get_members(){
+    return ['egoing', 'k8805', 'sorialgi'];
+    }
+    
+    members = get_members();
+
+    // members.length는 배열에 담긴 값의 숫자를 알려준다. 
+    for(i = 0; i < members.length; i++){
+        // members[i].toUpperCase()는 members[i]에 담긴 문자를 대문자로 변환해준다.
+        document.write(members[i].toUpperCase());   
+        document.write('<br />');
+    }
+
+    for (i=0; i< members.length; i++){ //i는 0번째부터 시작하고 1씩 늘어나는데, 그 i가 members.length보다 작다면 이하를 실행한다.
+
+    }
+
+
+    //요밑으로는 객체!! Array 아니고 Object.----------------------------
+
+    var sangyoon = {};
+
+    // []는 배열 즉 array이고 {}는 객체 즉 object이다!
+
+    sangyoon['grade'] = 1;
+    //상윤 객체에, grade라는 키값을 갖는 밸류 1을 집어넣음.
+    sangyoon['age'] = 26 //상윤객체의 age는 26이다.
+    sangyoon['mostwantedmessage'] = '뽜이링!!!!!!!' 
+    //상윤이의 most wanted message는 fighting이다.
+
+    //한번 출력해볼까?
+    alert(sangyoon['mostwantedmessage']);
+    //뽜이링이 나왔다면 성공.
+
+    //한번에 객체를 정의할수도 있다.
+
+    var donggyu = {
+        'name' : 'donggyu',
+        'age' : 27,
+        'mostwantedmessage' : '사랑해',
+        'height' : 175,
+        'symbol': 'mustache'
+    };
+
+    alert('동규의 MWM : ' + donggyu['mostwantedmessage']);
+
+    for (atb in donggyu){
+        document.write(atb + ':'  + donggyu[atb] + '<br>');
+    }
+
+    document.write('<hr>');
+
+    for (atb in sangyoon){
+        document.write('상윤이의 ' + atb + '는 ' + sangyoon[atb] + '<br>');
+    }
+
+    //요밑으로 좀 어렵다.
+
+    var gradess = {
+        'list' : {'donggyu' : 'A', 'sangyoon' : 'B', 'dohyun' : 'C'},
+        'show' : function(){
+            for(var name in this.list){
+                document.write(name + ':' + this.list[name] + '<br>');
+            }
+        }
+    };
+    
+    var 조직 ={
+        'list' : {'대장':'이동규','부대장':'이상윤','쫄따구':'이도기'},
+        'show' : function(){
+            for(직책 in this.list){
+
+            }
+        }
+
+    };
+
+
+
+</script>

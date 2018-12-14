@@ -1,0 +1,93 @@
+<h1>이름만 들어도 무서운 closure를 알아보자</h1>
+<script>
+
+//클로저는 이런것이다
+//내부함수는, 외부함수의 지역변수에 접근할 수 있는데,
+//심지어! 외부함수의 실행이 끝나서 (return) 외부함수가 종료된 이후에도 내부함수가, 외부함수의 변수에 접근할 수 있다. 
+//아래 예제를 보자.
+
+
+function outer(){
+    var name = 'donggyu'
+    return function shoutout(){ //이 return에서 outer함수는 끝났음에도
+       console.log(name); //여전히 내부함수 shoutout에서는 outer함수의 지역변수인 name에 접근이 가능하다.
+    }
+}
+
+
+var inner = outer();
+inner();
+
+//요런 메카니즘을 '클로저' 라고 한다고 한다.
+//참고로 영단어 closure는 '종료' 를 의미한다.
+
+
+//그렇다면 이 클로저개념을 도대체 어디에 적용하는가?
+
+function factory_movie(title){
+    return {
+        get_title : function(){
+            return title;
+        },
+        set_title : function(_title){
+            if(typeof _title === 'String'){
+                title = _title
+            }
+            else{
+                alert('제목은 문자열이어야 합니다');
+            }
+        }
+    }
+}
+
+ghost = factory_movie('Ghost in the shell');
+matrix = factory_movie('Matrix');
+
+alert(ghost.get_title());
+alert(matrix.get_title());
+
+ghost.set_title('공각기동대');
+
+alert(ghost.get_title());
+alert(matrix.get_title());
+ 
+
+//왜 private한 변수가 필요한가 - ?..
+//프로그래밍을 하다보면 많은 사람들이 코드를 작성하게 된다.
+//적당히 변수를 숨겨야, 그 논리 안에서만 안전하게 잘 작동할 수 있다. (나도모르는 수정의 위험이나 접근의 위험에서 안전)
+
+
+//아래는 클로저와 관련하여 자주 언급되는 예제이다.
+var arr = []
+for(var i = 0; i<5; i++){
+    arr[i] = function(){
+        return i;
+    }
+}
+
+for(var index in arr){
+    console.log(arr[index]());
+}
+
+//함수가 외부 함수의 컨텍스트에 접근할 수 있을 것으로 기대되지만 위의 결과는..
+//위의 코드는 아래와 같이 변경해야 한다.
+
+
+//준내 이해가 어렵다.
+var arr = []
+for(var i=0;i<5;i++){
+    arr[i] = function(id){
+        return function(){
+            return id;
+        }
+    }(i); //이건 함수를 담는다기 보다는 함수를 실행한 결과를 담는게 아닐까 싶은데
+    //맞는것 같다.
+    //i를 매개변수로 받아서 외부함수의 매개변수인 id에 넣어준다.
+}
+
+for(var index in arr){
+    console.log(arr[index]());
+}
+
+
+</script>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>그리드요</title>
+    <style>
+        .item1{grid-area:l;}
+        .item2{grid-area:m-h;}
+        .item3{grid-area:r;}
+        .item4{grid-area:cl;}
+        .item5{grid-area:m-l;}
+        .item6{grid-area:cr;}
+        .item7{grid-area:footer-left;}
+        .item8{grid-area:footer-right;}
+        .grid-container{
+            display:grid;
+            grid-template-areas: 
+                'l m-h r'
+                'cl m-h cr'
+                'cl m-l cr'
+                'footer-left m-l footer-right';
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 50px 1fr 50px;
+            background-color: blue;
+            border:3px solid green;
+            grid-gap:1px;
+            height:500px;
+        }
+        .grid-container > div{
+            background-color: rgba(255,255,255,0.8);
+        }
+        .dg{
+            margin:auto; 
+            border:1px solid red;
+            width:100px
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center">하코사의 주문사항</h1>
+    <div class="dg">아래와 같은 주문사항</div>
+    <img src="img/hacosa.jpg" alt="hacosa" width="500px" style="display:block; margin:auto">
+
+    <!--!!!!하나 배웠다. 이미지는 본래 inline-block element이기 때문에, display property를 block으로 고쳐주어야 margin auto가 적용된다고 한다!-->
+
+    <hr>
+
+    <div class="grid-container">
+        <div class="item1">일번</div>
+        <div class="item2">이번</div>
+        <div class="item3">삼번</div>
+        <div class="item4">사번</div>
+        <div class="item5">오번</div>
+        <div class="item6">육번</div>
+        <div class="item7">footer-left</div>
+        <div class="item8">footer-right</div>
+    </div>
+</body>
+</html>

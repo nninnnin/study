@@ -1,0 +1,39 @@
+제어문자와 서식문자
+
+
+제어문자
+
+\n -> newline
+\t -> tab
+\0 -> null
+\r -> carriage return이라고 한다. newline인데 맨 앞으로 커서가 이동하는것
+
+그래서 우리가 \n\r 쓰는거!!
+
+\a -> alert 경고음
+\b -> back
+
+(출력제어문자 -> 출력함수에서 사용)
+
+\newline
+\tab
+\0
+\r
+\alert
+\back
+
+
+서식문자
+
+
+%d -> decimal %u -> 부호없는 정수.(unsigned)
+%f -> float
+%lf -> long float
+%c ->  char
+%s -> string
+%e -> 지수
+%o -> 8진수
+%x -> 16진수
+...
+
+(얘네는 입.출력에서 사용)

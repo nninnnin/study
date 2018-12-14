@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @media (max-width:600px){
+            body{
+                background-color:green;/*body의 bg를 red로 바꾼다!*/
+            }
+        }
+        @media (max-width:500px){
+            body{
+                background-color: red;
+            }
+        }
+        @media (min-width:601px){
+            body{
+                background-color: blue;
+            }
+        }
+        #ctt{
+            font-size: 50px
+        }
+    </style>
+</head>
+<body>
+    <p>if문과 굉장히 비슷한 문법을 가지고있음!</p>
+
+    <p>max-width:500px을 조건으로 하면, max 500px까지 이 조건을 적용한다 - 는 말로 이해하면 되고 (조건 적용 상한선 500px)</p>
+
+    <p>min-width:500px을 조건으로 하면, min 500px까지 이 조건을 적용한다 - 는 말이니까 반대로 500아래로는 이 조건이 적용이 안된다는 말이겠지? 그러니까 500위로만 이 조건이 적용된다는 말이다. (조건 적용 하한선 500px)</p>
+
+    <p id="ctt"><b>
+    ~500px : <span style="color:red">red</span><br>
+    501px ~ 600px : <span style="color:green">green</span><br>
+    601px~ : <span style="color:blue">blue</span><br>
+    </b></p>
+</body>
+</html>

@@ -1,0 +1,19 @@
+.section{
+    background: white;
+
+    .title{
+        color: green;
+    }
+    .description{
+        text-align: center;
+    }
+    .description_list{
+        margin: 20px 0;
+        padding: 20px;
+        border: 1px solid gray;
+        dd{
+            font-size: 25px;
+            line-height: 41px;
+        }
+    }
+}

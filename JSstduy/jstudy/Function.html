@@ -1,0 +1,63 @@
+<script>
+
+//함수정의
+function numberring(){
+    i=0;
+    while(i<10){//i가 10보다 작다면 이하를 실행 (0부터 9까지니까 10번 실행되겠지?)
+        document.write(i);
+        i++;
+    }
+}
+
+
+//함수사용
+for(j=0;j<10;j++){
+    document.write('<br>');
+    numberring();
+}
+
+//return
+//함수 내에서 사용한 return은 return뒤에 따라오는 값을 함수의 결과로 반환한다.
+//동시에 함수를 종료시킨다.
+//아래 내용을 보자.
+
+function get_member1(){
+    return 'egoing';
+}
+
+function get_member2(){
+    return 'donggyu';
+}
+
+alert(get_member1());
+alert(get_member2());
+
+//return은 결과를 반환하는것 외에 함수를 중지시키는 역할도 한다.
+function get_member(){
+    return 'a';
+    return 'b';
+    return 'c';
+}
+
+alert(get_member());
+
+function get_argument(arg){
+    return arg;
+}
+
+document.write('<br>'+get_argument('이동규'));
+
+//다른 방식으로 함수 정의하기 (함수 표현식!)
+
+var number = function(){
+    i=0;
+    while(i<10){
+        document.write('<br> number'+i)
+        i++;
+    }
+}
+
+number();
+
+
+</script>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>좋아요</h1>
+    <ol>
+        <li>좋아요 버튼을 누르면 색칠된 아이콘으로 바뀌고, 다시 한번 더 누르면 빈 아이콘으로 바뀝니다.</li>
+        <li>아이콘은 <a href="https://fontawesome.com/icons?d=gallery">폰트어썸</a>>에서 thumbs-up 또는 heart로 이용해봅시당</li>
+    </ol>
+
+    <button onclick="like();"><i class="far fa-thumbs-up" id="icon"></i></button>
+    <button onclick="love();"><i class="far fa-heart" id="icon2"></i></button>
+
+    <script>
+        function like(){
+            var icon = document.getElementById('icon');
+            if(icon.className == "far fa-thumbs-up"){
+                icon.className = "fas fa-thumbs-up";
+            }
+            else{
+                icon.className = "far fa-thumbs-up";
+            }
+        }
+
+        function love(){
+            var icon = document.getElementById('icon2');
+            if(icon.className == "far fa-heart"){
+                icon.className = "fas fa-heart";
+            }
+            else{
+                icon.className = "far fa-heart";
+            }
+        }
+    </script>
+
+</body>
+</html>

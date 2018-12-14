@@ -1,0 +1,52 @@
+<input type="button" id="execute" value="execute"/>
+
+<script>
+document.querySelector('input').addeventListener('click',function(event){//클릭하면,
+    var xhr = XmlHttpRequest();//XmlHttpRequest 객체를 생성하고,
+    xhr.open('GET','./time2.php'); //비동기 통신을 위한 채널을 연다, GET방식을 사용하고 해당 url을 목적지로 하는.
+    xhr.onreadystatechange = function(){ //그리고 onreadystatechange 라는 통신의 단계가 바뀔 때 동작하는 함수에다가..
+        if(xhr.readystate===4 && xhr.status === 200){ //readystate가 4, 즉 통신이 종료되는 단계이고, xhr.status가 200, 즉 통신이 무사히 완료되었다면,
+            document.querySelector().innerHTML = xhr.responseText;//해당 html element의 innerHTML을 응답받은 데이터인 responseText로 대체시킨다.
+        }
+    }
+
+    xhr.send();//xhr.send를 쓰면, 드디어 xhr객체가 통신을 시작하게 된다.(request를 send)
+})
+
+
+
+document.querySelector('input').eventListener('click',(event)=>{
+    const xhr = XmlHttpRequest();
+    xhr.open('GET','어디로보낼지');
+    xhr.onreadystatechange = ()=>{
+        if(xhr.readystate===4 && xhr.status===200){
+            document.querySelector('#time').innerHTML = xhr.responseText;
+        }
+    }   
+    xhr.send(); 
+})
+
+
+document.QuerySelector('input').addeventListener('click',(event)=>{
+    const xhr = XmlHttpRequest();
+    xhr.open('POST','어디로보낼지');
+    xhr.onreadystatechange(()=>{
+        //왜 if문 없앴지? readystate==4랑 status==200을 확인하지 않아도 될 필요라도?
+        //get방식에선 통신이 정상적으로 완료되면 responseText를 innerHTML로 넣어주는 기능
+        //post방식에서는 데이터를 갖다가 post하는 것이다 그니까 post자체가 통신이 끝나는 것이기 때문에?..
+        document.querySelector().innerHTML = xhr.responseText;
+    });
+    xhr.setRequestHeader();
+    var data='';
+    data += 'timezone=' + document.getElementById('#timezone').value;
+    data += '&format' + document.getElementById('#format').value;
+
+    //완성되어 보내지는 형태는
+    //data = timezone='valueOfTimeZone'&format='valueOfFormat' 
+    //요런식이겠죠
+
+    xhr.send(data);//데이터를 post,즉 보낸다. get방식에서처럼 가져오는 정보는 없다.
+})
+
+
+</script>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <h1>HTML</h1>
+    <ol>
+        <li>기술소개</li>
+        <li>기본문법</li>
+        <li>하이퍼텍스트와 속성</li>
+        <li>리스트와 태그의 중첩</li>
+    </ol>
+
+    <h2>선행학습</h2>
+    <p>독타입이란 무엇인가?</p>
+
+    <hr>
+    <h2>폼</h2>
+    <form action="http://localhost/login.php"> <!--요기로 전송해주세요-->
+        <p>아이디 : <input type="text" name="id"></p>
+        <p>비밀번호 : <input type="password" name="pwd"></p>
+        <p>주소 : <input type="text" name="address"></p>
+        <input type="submit">
+    </form>
+    <hr>
+    <form action="어딘가요">
+        <input type="text" name="id" value="default value"><br>
+        <input type="text" name="pwd" value="default value"><br>
+        <textarea cols="50" rows="2">default value</textarea><br>
+    </form>
+
+    <form action="어디냐구" style="background-color: red">
+        <select name="color" id="color">
+            <option value="1">레드</option><!--아마 요기서 선택한 option이름에 해당하는 value가, 위의 select의 color라는 name 즉 키값에 해당하는 value로서 form action 주소에 해당하는 곳으로 넘겨지게 된다. 만약 그린을 선택한다면 color라는 키값에 해당하는 value는 2로, color : 2 뭐 요런 식으로 넘겨지겠지-->
+            <option value="2">그린</option>
+            <option value="3">옐로로로우</option>
+        </select><!--name은 전송할때의 키값이고, id는 js나 css로 얘를 가리키고싶을때 셀렉터가 되어주는 역할-->
+        <br>   
+        <select name="shape" id="shape">
+            <option value="세모">ㅅ</option>
+            <option value="네모">ㅁ</option>
+            <option value="동그">ㅇ</option>
+        </select>
+        <input type="submit">
+    </form>
+
+    <form action="가버려여기로">
+        <h2>색상</h2>
+        빨<input type="radio" name="color" value="red">
+        초<input type="radio" name="color" value="green">
+        노<input type="radio" name="color" value="yellow">
+        <h2>사이즈(중복선택가능)</h2>
+        90 : <input type="checkbox" name="size" value="90"> 
+        95 : <input type="checkbox" name="size" value="95">
+        100 : <input type="checkbox" name="size" value="100">
+    </form>
+    <!--value값이 어디에 쓰이냐면..여기 셀렉트 옵션에 보면, 레드 그린 옐로우로 우리는 선택을 하지만 만약 우리가 그린을 선택해서 form submit을 저 주소로 했을 때 저기로 보내지는 값! 말 그대로 value!는 '그린'이라는 string이 아니라 우리가 그 option에 value로 설정해 둔 숫자 2가 날라가는 겁니다!-->
+
+    <!--배운걸 정리를 좀 하자면..
+    1. input type name id value가 무엇인지. type text가 기본이고, name은 이 인풋값에 입력된 value의 key값을 의미합니다. value는 사용자들이 보고 선택하는 값과 다르게 선택 가능합니다!
+    2. 여러가지의 input type들.. radio랑 checkbox. 두개 묶어서 기억하자.
+    radio는 여러개중 하나 선택할 수 있게끔 하는거고,(하나의 폼 안에 여러개의 radio type input이 있을 때)
+    checkbox는 중복 가능하게 선택할 수 있게 하는거고.
+    3. select랑 option을 쓰면 드롭다운 input을 만들 수 있다!
+    4. textarea는 <textarea></textarea>로 쓰는거구 col row로 범위조정 가능.
+    
+    
+    -->
+</body>
+</html>

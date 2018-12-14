@@ -1,0 +1,64 @@
+<h1>반복문 in javascript</h1>
+
+<script>
+
+//while
+var  i = 0;
+
+while (i < 5){ //i가 5보다 작을 때, 이하를 실행한다
+    document.write('dg'+i + '<br>');//아마 0부터 4까지니까 5번 dg를 그리겠군
+    i++; //만약 이걸 안써주면 무한 loop이겠지?
+}
+
+//for
+for(i=0;i<10;i++){//0부터 1씩 커지면서 9까지 실행될테니 10번 실행되겠지~
+    document.write(i);//0부터 9까지 써봐
+}
+
+// !!반복문들은 닫고나서 세미콜론을 붙일 필요 없다. 대신 안에있는 실행되는 코드들에는 당연히 붙여줘야된다.
+
+
+//break
+
+for(var i=0;i<10;i++){//i는 0부터 시작하고 1씩 늘어나고, i가 10보다 작을 때 이하를 실행
+    document.write('<br>' + i + '번째 donggyu');
+
+    //근디...??
+    if(i==5){
+        break;
+    }
+    //계산을 잘 해야 한다!! 5번째 실행에 끝나는게 아니라, i가 5일때, 즉 6번째 실행에 break되는거다.****
+}
+
+//continue
+ 
+for(i=0;i<10;i++){
+    if(i==5){
+        continue; //i가 5일때, 그냥 바로 반복문 맨 위로 올라가버린다!!
+    }
+    document.write('<br> 이것은' +i+ '번째');
+}
+
+//반복문의 중첩 (duplicated loop)
+for(i=2;i<10;i++){ //2부터 9까지 구구단을 외워볼까
+
+    document.write('<br>');
+    
+    if(i==5){//나는 5단이 싫더라
+        continue;
+    }
+    for(j=1;j<10;j++){
+        //'은'이 나오는 경우
+        if(j==1 || j==3 || j==6 || j==7 || j==8){
+            document.write(i+'곱하기'+j+'은'+i*j+'<br>');
+        }
+        //'는'이 나오는 경우
+        else{
+            document.write(i+'곱하기'+j+'는'+i*j+'<br>');
+        }
+    }
+}
+
+
+
+</script>

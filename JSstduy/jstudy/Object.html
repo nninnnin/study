@@ -1,0 +1,57 @@
+<script>
+
+    var grades = { //하나 새롭게 알게 된 사실은 키값에 굳이 '' 안붙여도 된다는거.
+        'donggyu':'A',
+        'sangyoon':'B',
+        jm:'C',
+        dg1 : function(){
+            console.log('dg1');
+        },
+        //이거줄여서
+        dg2(){
+            console.log('dg2');
+        }
+    };
+    console.log(grades);
+    grades.dg1();
+    grades.dg2();
+
+
+    //다른 방법으로 객체를 만들 수도 있다.
+
+    var justin = new Object(); //일단 object즉 객체를 만들어놓고,
+    justin['first']=10;
+    justin['second']=20;
+    justin['third']=30;
+    justin['run']=function(){
+        console.log('Run Justin!');
+    };
+
+    //요렇게 키와 밸류를 집어넣어 줄수도 있다.
+    //근데 이런 방식으로 집어넣어 줄때는 키값에 꼭 따옴표를 붙여야한다는거
+    // ObjectName['Key'] = Value;
+
+    console.log(justin);
+    justin.run();
+
+    for(key in justin){
+        document.write(justin[key]+'<br>');
+    }
+
+    var MyProps = {
+        list : {
+            wallet:'Ethereum Hard Wallet',
+            glasses:'2 fancy glasses',
+            cash:'20,000 Won',
+            yogurt:'비피더스'
+        },
+        printList(){
+            for(prop in this.list){
+                document.write('<br>'+ prop + ' : ' + this.list[prop]);
+            }
+            console.log(this.list);
+        }
+    };
+
+    MyProps.printList();
+</script>

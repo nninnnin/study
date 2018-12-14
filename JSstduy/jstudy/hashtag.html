@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <h1>Hashtag '#' 자동 완성 기능(동규)</h1>
+    <ol>
+        <li>input 입력 칸에 '#'이 준비되어 있어야 함</li>
+        <li>사용자가 스페이스를 누를때마다 '#'이 자동입력 되어야 함->javascript, 스페이스 keyCode사용</li>
+        <li>입력 버튼을 누르면 밑에 p태그를 나타낸다 (버튼 누르기 전에는 아무 내용도 없어야 함)</li>
+    </ol>
+
+    <input type="text" value="#" id ="#" onkeydown="hashtag();">
+
+    <button onclick="printtag();">태그!</button>
+
+    <p id="tags"></p>
+
+    <script>
+        //input창에 해줘야 할 처리들이 많다. 스페이스를 누르면 #도 추가해야하고, 
+        //또 input창에 써준 값들을 불러와서 p tag안으로 넣어주기도 해야한다.
+        alltag = document.querySelector('input');
+
+        function hashtag(){ //스페이스를 누르면 #을 추가한다.
+            if(event.keyCode == 32){
+                alltag.value += " #";
+                // return false; //? 이건 왜들어간건지...
+            }
+        }
+
+        function printtag(){ //버튼을 누르면 모든태그를 p태그로 프린팅
+            
+            document.getElementById('tags').innerHTML = alltag.value;
+        }
+
+        
+    </script>
+
+
+
+</body>
+</html>

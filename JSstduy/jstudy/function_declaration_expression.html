@@ -1,0 +1,34 @@
+<script>
+
+
+logMessage();
+sumNumbers();
+
+function logMessage() {
+  console.log('worked');
+}
+
+var sumNumbers = function () {
+  console.log(10+20);
+};
+
+
+
+//함수 표현식으로 클로져 생성하기
+//클로져는 함수를 실행하기 전에 해당 함수에 변수를 넘기고 싶을 때 사용한다.
+//'내부함수가 외부함수의 맥락(context)에 접근할 수 있는 것을 가리킨다.
+//더 쉽게 사용하기위해 아래 예제를 살펴보자.
+
+function tabsHandler(index){
+    return function tabClickEvent(){
+        console.log(index);//바깥 함수인 tabs Handler() 의 index인자를 여기서 접근할 수 있다.
+    };
+}
+
+var tabs = document.querySelectorAll('.tab');
+
+for(i=0; i<tabs.length; i++){
+    tabs[i].onclick = tabsHandler(i);
+}
+
+</script>

@@ -1,0 +1,76 @@
+<script>
+var member = ['egoing','k8805','sorialgi'];
+
+alert(member);
+
+//객체
+
+var grades = {};
+//배열은 var 어쩌꾸 = [];
+//객체는 var 어쩌구 = {}; ㅇㅋ?
+
+//grades 객체의 'egoing' 키값에 10이라는 value를 저장해라.
+grades['egoing'] = 10; //egoing은 key이고, 10은 value.
+grades['k8805'] = 6;
+grades['sorailsig'] = 4;
+
+
+//혹은 
+var gradee = {
+    'donggyu' : 10,
+    'dogi': 20,
+    'dd': 30
+};
+
+//이렇게도 가능하다
+
+//값을 불러와보자
+alert(grades['egoing'] + gradee['donggyu']);
+
+alert(grades.egoing);
+
+
+for(key in gradee){
+    document.write('key is ' + key + ' and value is ' + gradee[key] + "<br>");
+}
+
+var donggyu = {
+    'name' : 'donggyu',
+    'age' : 27,
+    'sex':'male'
+};
+
+for(key in donggyu){
+    document.write(key + ' ' + donggyu[key]);
+}
+
+
+var gradess = {
+    'list': {'donggyu': 'A', 'syngmi': 'B', 'egoing' : 'C'}, //이거는 객체 안에 객체..
+    'show':function(){ //이거는 객체 안에있는 메소드..
+        for(var name in this.list){ //이 객체의 list라는 property안에 있는 모든 name에 대해서 이하를 실행,
+            document.write(name + ':' + this.list[name] + "<br>"); //각 네임과, 네임에 대한 value출력
+        }
+    }
+};
+
+gradess.show();
+
+
+var books = {
+    'list': {'first':'달과6펜스', 'second':'이것이 자바다'},
+    'show': function(order){
+        document.write(this.list[order]);
+    },
+    'showAll': function(){
+        for(order in this.list){ //이 객체의 list에 있는 모든 order라는 키에 대하여 순서대로 이하를 수행
+            document.write(this.list[order]); //order라는 키에 해당하는 각각의 value를 출력
+        }
+    }
+};
+
+books.show('first');
+document.write('<br>');
+books.showAll();
+
+</script>
