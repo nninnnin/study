@@ -6,6 +6,11 @@
 컴포넌트가 브라우저에 나타나기 전, 후에 호출되는 API들이 있다.
 
 - constructor
+  ```
+  constructor(props){
+      super(props);
+  }
+  ```
 - componentWillMount
 - componentDidMount
 
