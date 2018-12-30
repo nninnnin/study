@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        window.onload = function(){
+            var startButton = document.getElementById('start');
+            var stopButton = document.getElementById('stop');
+            var display = document.getElementById('display');
+            var startTime, timer;
+            startButton.onclick = start; //start버튼 활성화. 객체의 프로퍼티에다가 이벤트핸들러를 먹임
+
+            //이벤트핸들러 start정의
+            function start(){
+                startButton.onclick = null;//start를 눌러서 해당 이벤트를 실행했으니 start버튼 비활성화
+                stopButton.onclick = stop;//stop버튼 활성화
+                startTime = new Date();//0.01초마다 경과한 시간을 표시
+                
+                timer = setInterval(function(){//timer 시작!, setInterval의 콜백함수 정의
+                    var now = new Date();//display에 경과한 시간 쓰기
+                    display.innerHTML = ((now-startTime)/1000).toFixed(2);}
+                    ,10)//1000분의 10초, 즉 0.01초 단위로 콜백함수를 실행하는데, 그 콜백함수는 now라는 새로운 시간을 0.01초 단위로 계속 만들어내는 것이고 그 0.01초마다 새롭게 생성되는 now라는 시간에서 startTime이라는, 시작시의 시간을 뺀 값, 즉 지금의 시간에서 스타트시간을 뺀 시간, 즉 스타트 버튼을 누르고 나서 지나간 시간을 0.01초 단위로 계산하고 display.innerHTML에 업데이트하는 것!
+            }
+
+            //이벤트핸들러 stop 정의
+            function stop(){
+                clearInterval(timer);
+                startButton.onclick = start; //start버튼 활성화
+            }
+        };
+    </script>
+</head>
+<body>
+    <p id="display">0.00</p>
+    <input id="start" type="button" value="start">
+    <input id="stop" type="button" value="stop">
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>현재시간을 콘솔에 표시하기</title>
+    <script>
+        function displayTime(){
+            let d = new Date();
+            document.write(`현재시간은 ${d.toLocaleString()} 입니다!`);//Date객체의 toLocalString은 지역화된 시간과 날짜정보를 제공합니다. 다른 메소드를 보고싶다면 책 119p참고^^
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="click" onclick="displayTime()">
+</body>
+</html>

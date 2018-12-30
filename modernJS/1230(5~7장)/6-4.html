@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script>
+        window.onload = function(){
+            document.getElementById("button").onclick = function(){
+                //input element에 입력된 몸무게 데이터와 키 데이터를 가져온다
+                var h = parseFloat(document.getElementById("height").value);
+                var w = parseFloat(document.getElementById("weight").value);
+                //체질량지수를 나타내는 bmi라는 id를 가진 element(output element)에 기록
+                var bmi = document.getElementById("bmi");
+                bmi.innerHTML = (w/h/h).toFixed(1);
+            };
+        };
+    </script>
+</head>
+<body>
+    <p>키: <input type="number" id="height"> m</p>
+    <p>몸무게: <input type="number" id="weight"> kg</p>
+    <p>당신의 체질량지수는 <output id="bmi">?</output> 입니다!</p>
+        <input type="button" id="button" value="계산">
+</body>
+</html>

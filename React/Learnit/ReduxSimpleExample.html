@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>간단한 리덕스예제(by velopert)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/3.6.0/redux.js"></script>
+</head>
+<body>
+    <h1 id="number">0</h1>
+    <button id="increment">+</button>
+    <button id="decrement">-</button>
+
+<script>
+    //편의를 위하여 각 DOM 엘리먼트에 대한 레퍼런스를 만들어줍니다.
+    const elNumber = document.getElementById('number');
+    const btnIncrement = document.getElementById('increment');
+    const btnDecrement = document.getElementById('decrement');
+
+    //액션 타입을 정의해줍니다.
+    const INCREMENT = 'INCREMENT';
+    const DECREMENT = 'DECREMENT';
+
+    //먼저, 액션은 객체입니다!! dispatch는 액션을 보내주는 함수.
+    //액션은 상태에 변화를 일으킬 때 참조할 수 있는 객체.(액션은 객체다!!!)
+    //dispatch라는 함수를 통하여 액션을 스토어에게 던져줌.
+    //액션 객체는 필수적으로 type이라는 값을 가지고 있어야 함.
+    //액션 객체를 만들어주는 액션 생성 함수
+    const increment = (diff)=>({type:INCREMENT, diff:diff});
+    const decrement = ()=>({type:DECREMENT});
+
+    //초기값을 설정합니다. 상태의 형태는 개발자 마음대로.
+    const initialState = {
+        number: 0
+    };
+
+    /*
+        이하는 리듀서함수입니다.
+        state와 action을 파라미터로 받아옵니다.
+        그리고 그에 따라 다음 상태를 정의 한 다음에 반환해줍니다.
+
+        리듀서 함수가 어떤식으로 구성되었는지 살펴봅시다..
+    */
+    const counter = (state = initialState, action) =>{
+        console.log(action);
+        switch(action.type){//액션의 type을 인자로 받고,
+            case INCREMENT://type에 따라서 case를 나누고 해당 type에 맞는 로직을 실행!
+                return{
+                    number: state.number + action.diff
+                };
+            case DECREMENT:
+                return{
+                    number: state.number -1
+                };
+            default:
+                return state;
+        }
+    }
+
+    //스토어를 만들 떄에는 createStore에 리듀서 함수를 넣어서 호출합니다.
+    const { createStore } = Redux;
+    const store = createStore(counter);
+
+    //상태가 변경될 때 마다 호출시킬 listener 함수입니다
+    const render =()=>{
+        elNumber.innerText = store.getState().number;
+        console.log('listener실행')
+    }
+
+    //스토어에 구독을 하고, 변화가 있다면 render()라는 listener함수 실행
+    store.subscribe(render);
+
+    //초기 렌더링을 위하여 직접 실행
+    render();
+
+    //버튼에 이벤트를 달아줍니다
+    //스토어에 변화를 일으키라고 할 때에는 dispatch 함수에 액션 객체를 넣어서 호출
+
+    btnIncrement.addEventListener('click',()=>{
+        console.log('++')
+        store.dispatch(increment(20));//increment(25) 액션객체를 store에게 dispatch..!
+    })
+
+    btnDecrement.addEventListener('click',()=>{
+        store.dispatch(decrement()); //decrement 액션 객체를 담아서 dispatch를, store에게 보낸다.
+    })
+
+    /*
+    순서대로 정리.
+    1) 액션타입을 만들어주었다
+    2) 그리고 각 액션타입들을 위한 액션 생성함수를 만들었다.
+    액션 함수를 만드는 이유는 그때그때 액션을 만들때마다 직업 {이러한 객체} 형식으로 객체를 일일히 생성하는 것이 번거롭기 때문에 이를 함수화 한 것이며, 나중에는 특히 액션에 다양한 파라미터가 필요해질 때 유용하다.
+    3) 변화를 일으켜주는 함수인 리듀서를 정의해주었다. 이 함수에서는 각 액션타입마다, 액션이 들어오면 어떠한 변화를 일으킬지 정의한다. 지금의 경우에는 상태객체에 number라는 값이 들어져있다. 변화를 일으킬 때에는 불변성을 유지시켜주어야만 한다.
+    4) 스토어를 만들었다. 스토어를 만들때에는 createStore를 사용하여 만든다. createStore에는 리듀서가 들어간다. 스토어의 초기상태, 그리고 미들웨어도 넣을 수 있다!
+    5) 스토어에 변화가 생길때마다 실행시킬 리스너함수 render를 만들어주고, store.subscribe를 통해 등록해주었다.
+    6) 각 버튼의 클릭이벤트에, store.dispatch를 사용하여 액션을 넣어주었다.
+    */
+
+</script>
+</body>
+</html>
