@@ -27,7 +27,7 @@
     - console.trace : 스택 트레이스를 출력
 
 - 콘솔에 텍스트 출력하기
-  - C언어 스타일로 서식 문자열을 사용하여 출력할수도 있다<br>
+  - C언어 스타일로 서식 문자열(format specifier)을 사용하여 출력할수도 있다<br>
     ```js
     var name = "TOM"
     var height 172.5;
@@ -40,7 +40,7 @@ console.dir 메소드는 객체의 프로퍼티를 나열합니다.<br>
     <log와 dir의 차이>  
     !['console.dir'](img/dir.jpg)
 
-    ***그런데..그래서 dir이 뭐가 좋다는거지?ㅠㅠ***
+    log는 바로 해당하는 객체의 내용을 보여주고 dir은 트리형식으로 보여준다.
     <hr>
 
 - **타이머**<br>
@@ -67,7 +67,8 @@ console.timeEnd('timer_for_alert');//타이머 이름이 같아야 정상적으�
 
 **함수를 이벤트 처리기로 등록하는 방법에는 세가지가 있습니다!**
 
-1. HTML element 의 attribute(속성)로 등록하는 방법 (onClick)
+
+## 1. HTML element 의 attribute(속성)로 등록하는 방법 (onClick)
 ```html
 <!DOCTYPE html>
 <html>
@@ -102,13 +103,14 @@ console.timeEnd('timer_for_alert');//타이머 이름이 같아야 정상적으�
 - onkeydown : 키 눌렀을 때
 - onkeypress : 키를 누르고 손가락을 떼었을 때
 - onkeyup : 키보드의 키에서 손가락을 떼었을 때
-- **key down과 key press의 차이!<br>: 'character'와 'key'의 차이이다. 먼저 순서로 보자면 down이 먼저, press가 그 다음, up이 마지막인데 'key'라는 것은 physical button을 의미하고 'character'는 그 버튼을 눌렀을 때 입력되는 어떤 symbol을 의미한다. 아래 링크에서 tester에 무언가를 길게 입력해보면 key down과 key press의 차이를 명확하게 알 수 있을 것이다!!
+- 
+- **key down과 key press의 차이!<br>: 두 차이는 'character'와 'key'의 차이이다. 먼저 순서로 보자면 down이 먼저, press가 그 다음, up이 마지막인데 'key'라는 것은 physical button을 의미하고 'character'는 그 버튼을 눌렀을 때 입력되는 어떤 symbol을 의미한다. 아래 링크에서 tester에 무언가를 길게 입력해보면 key down과 key press의 차이를 명확하게 알 수 있을 것이다!!
   http://web.archive.org/web/20161212021242/http://www.bloggingdeveloper.com/post/KeyPress-KeyDown-KeyUp-The-Difference-Between-Javascript-Key-Events.aspx
 - 
 - onchange : input 요소의 값이 바뀌었을 때
 - onblur : input요소가 포커스를 잃었을 때
 - onfocus : input 요소에 포커스를 맞추었을 때 (예제링크 : https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_onfocus)
-- onselect : 텍스트필드등의 텍스트를 선택했을 때
+- onselect : 텍스트필드등의 텍스트를 선택했을 때(https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_ev_onselect)
 - onsubmit : 폼 제출 버튼을 눌렀을 때
 - onload : HTML을 모두 읽어들였을 때
 - onunloadWeb : 웹 페이지가 메모리에서 내려갈 때(예 : 다른 페이지로 전환할 때)
@@ -116,9 +118,11 @@ console.timeEnd('timer_for_alert');//타이머 이름이 같아야 정상적으�
 - onerror : 페이지나 이미지를 읽어 들이는 동안 '**오류가 발생**'했을 때(에러핸들링)
 - onresize : HTML요소의 크기가 바뀌었을 때
 
-이벤트 처리기 속성을 사용해서 이벤트 처리기를 등록하면 HTML코드와 자바스크립트 코드가 뒤섞이는 단점이 있습니다! HTML 코드와 자바스크립트 코드를 분리하려면, 다음 절에서 설명하는 DOM에서 가져온 HTML element에 이벤트 처리기 지정하기, 를 사용하거나 addEventListener메서드를 사용합니다.
+각 HTML element attribute을 사용해서 이벤트 처리기를 등록하면 HTML코드와 자바스크립트 코드가 뒤섞인다는 단점이 있습니다. HTML 코드와 자바스크립트 코드를 분리하려면, 다음 절에서 설명하는 DOM에서 가져온 HTML element에 이벤트 처리기 지정하기 를 사용하거나 addEventListener메서드를 사용합니다.
 
-2. DOM element 의 property로 등록하는 방법
+<hr>
+
+## 2. DOM element 의 property로 등록하는 방법(객체의 프로퍼티에 등록)
 
 DOM을 사용해서 EventHandler 등록하기
 
@@ -198,13 +202,13 @@ https://www.youtube.com/watch?v=iNH4UQxZexs&t=47s
                 
                 timer = setInterval(function(){//timer 시작!, setInterval의 콜백함수 정의
                     var now = new Date();//display에 경과한 시간 쓰기
-                    display.innerHTML = ((now-startTime)/1000).toFixed(2);}
+                    display.innerHTML = ((now-startTime)/1000).toFixed(2);}//그냥 빼기만하면 초단위가 아니라 milliseconds단위로 나오기 때문에 1000으로 나누어주어야 하고, toFixed(2)로 소숫점 둘쨋자리까지만 나올 수 있도록 해준다.
                     ,10)
             }
 
             //이벤트핸들러 stop 정의
             function stop(){
-                clearInterval(timer);
+                clearInterval(timer);//setInterval 해제
                 startButton.onclick = start; //start버튼 활성화
             }
         };
@@ -259,7 +263,7 @@ input element 등의 폼 컨트롤 요소(form control element)를 사용하면 
 
 자바스크립트를 이용한 프로그래밍에서, output은 통상적으로 위에서처럼 innerHTML등으로 html element내에 출력하는 것이 일반적이지만 초창기에는 document.write만이 유일한 수단이었다.
 
-document.write메서드는 인수로 받은 무자열을 HTML 문서의 body element안에 출력한다.
+document.write메서드는 인수로 받은 문자열을 HTML 문서의 body element안에 출력한다.
 
 ```html
 <body>
